@@ -1,0 +1,22 @@
+#  -------------------------------------
+#  how-to-bring-up-docker-wsl-ubuntu2204
+#  -------------------------------------
+#  sudo apt update
+#  sudo apt list --upgradable
+#  sudo apt install docker.io
+#  sudo dockerd
+#  pstree 
+#  # only user in docker group can connect to docker daemon
+#  echo $USER
+#  usermod -aG docker $USER 
+#  sudo usermod -aG docker $USER 
+#  cat /etc/group
+#  # usermod change needs logout/login in to be effective
+#  docker run hello-world
+
+#  -------------------------------------
+#  how-to-tweak-tmux-wsl-ubuntu2204
+#  -------------------------------------
+#  cd ~
+#  git clone https://github.com/weigian/wsl_dotfiles
+#  cp -f wsl_dotfiles/tmux.conf .tmux.conf
