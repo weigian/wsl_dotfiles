@@ -1,0 +1,2 @@
+svn status --no-ignore | grep '^\?' | sed 's/^\?     //'  | xargs rm -rf
+svn cleanup --remove-unversioned --remove-ignored .   ;# svn 1.9 later
