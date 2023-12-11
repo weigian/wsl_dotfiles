@@ -1,2 +1,14 @@
 svn status --no-ignore | grep '^\?' | sed 's/^\?     //'  | xargs rm -rf
 svn cleanup --remove-unversioned --remove-ignored .   ;# svn 1.9 later
+
+#--------------------------------------------
+# netsh interface set interface admin=disabled connect=disconnected
+# netsh interface set interface name="乙太網路 2" admin=enabled connect=disconnected
+# netsh interface set interface name="乙太網路 2" admin=enabled connect=connected
+
+netsh interface show interface
+netsh wlan show profile
+netsh wlan show networks
+
+netsh wlan connect name="MonoCellWiFi"
+netsh wlan disconnect
