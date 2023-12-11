@@ -12,3 +12,10 @@ netsh wlan show networks
 
 netsh wlan connect name="MonoCellWiFi"
 netsh wlan disconnect
+
+#--------------------------------------------
+# https://github.com/veripool/verilog-perl
+# need to pre installed: gcc flex bison and libcrypt 
+cpan install Verilog::Language
+
+#--------------------------------------------
