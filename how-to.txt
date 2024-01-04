@@ -20,3 +20,79 @@
 #  cd ~
 #  git clone https://github.com/weigian/wsl_dotfiles
 #  cp -f wsl_dotfiles/tmux.conf .tmux.conf
+
+#  -------------------------------------
+# myHDL shell script
+#  -------------------------------------
+#!/bin/sh
+
+fun setup_and_install_myHDL()
+{
+    echo "setup_and_install_myHDL()"
+#
+# pip3 install --upgrade pip
+# pip3 install virtualenv
+        pip3 list
+        Package    Version
+        ---------- -------
+        pip        21.3.1
+        setuptools 59.5.0
+
+        virtualenv env01
+        source env01/bin/activate
+
+        pip3 install myhdl
+        pip3 list
+
+        Package             Version
+        ------------------- -------
+        distlib             0.3.8
+        filelock            3.4.1
+        importlib-metadata  4.8.3
+        importlib-resources 5.4.0
+        pip                 21.3.1
+        platformdirs        2.4.0
+        setuptools          59.5.0
+        typing_extensions   4.1.1
+        virtualenv          20.17.1
+        zipp                3.6.0
+
+        deactivate
+}
+
+fun run_myHDL_example()
+{
+    echo "run_myHDL_example"
+        virtualenv env01
+        source env01/bin/activate
+
+        mkdir env01/tst
+        cat > env01/tst/helloworld.py << EOF
+from myhdl import block, delay, always, now
+
+@block
+def HelloWorld():
+
+    @always(delay(10))
+    def say_hello():
+        print("%s Hello World!" % now())
+
+    return say_hello
+
+inst = HelloWorld()
+inst.run_sim(30)
+EOF
+
+    python env01/tst/helloword.py
+    deactivate
+}
+
+# --- main ---
+
+setup_and_install_myHDL()
+run_myHDL_example()
+
+#  -------------------------------------
+# appedn from here
+#  -------------------------------------
+
