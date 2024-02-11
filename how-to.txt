@@ -22,11 +22,14 @@
 #  cp -f wsl_dotfiles/tmux.conf .tmux.conf
 
 #  -------------------------------------
-# myHDL shell script
+#  how-to-install-bring-up-myHDL 2024/02/11
 #  -------------------------------------
 #!/bin/sh
 
-fun setup_and_install_myHDL()
+#  myHDL shell script
+#  https://docs.myhdl.org/en/stable/manual/preface.html
+
+setup_and_install_myHDL()
 {
     echo "setup_and_install_myHDL()"
 #
@@ -38,11 +41,11 @@ fun setup_and_install_myHDL()
         pip        21.3.1
         setuptools 59.5.0
 
-        virtualenv env01
-        source env01/bin/activate
+# virtualenv env01
+# source env01/bin/activate
 
-        pip3 install myhdl
-        pip3 list
+# pip3 install myhdl
+# pip3 list
 
         Package             Version
         ------------------- -------
@@ -57,7 +60,7 @@ fun setup_and_install_myHDL()
         virtualenv          20.17.1
         zipp                3.6.0
 
-        deactivate
+# deactivate
 }
 
 fun run_myHDL_example()
@@ -93,6 +96,29 @@ setup_and_install_myHDL()
 run_myHDL_example()
 
 #  -------------------------------------
-# appedn from here
+#  how-to-intall-icarus-iverilog-v13.0 2023/12/05
+#  -------------------------------------
+#  git clone https://github.com/steveicarus/iverilog.git
+#  sudo apt update
+#  sudo apt install -y autoconf gperf make gcc g++ bison flex
+#  sh autoconf.sh
+#  ./configure 
+#  make
+#  make check
+#  sudo make install
+
+
+#  -------------------------------------
+#  how-to-duplicate-python-virtualenv 2024/02/11
+#  -------------------------------------
+pip freeze > requirements.txt
+Then push the requirements.txt file to anywhere you want to deploy the code, and then just do what you did on dev machine -
+
+$ virtualenv <env_name>
+$ source <env_name>/bin/activate
+(<env_name>)$ pip install -r path/to/requirements.txt
+
+#  -------------------------------------
+# append from here
 #  -------------------------------------
 
