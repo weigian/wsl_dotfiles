@@ -9,6 +9,7 @@ svn cleanup --remove-unversioned --remove-ignored .   ;# svn 1.9 later
 netsh interface show interface
 netsh wlan show profile
 netsh wlan show networks
+netsh wlan show interfaces
 
 netsh wlan connect name="MonoCellWiFi"
 netsh wlan disconnect
@@ -30,8 +31,10 @@ cpan install Verilog::Language
 #--------------------------------------------
 # sftp concorn for .cshrc_user
 #
-#The "Received message too long <decimal number>" indicates that the shell startup files on the remote system contain at least one command that is trying to write text to the terminal. The 'ssh' program is able to handle the text output, but 'sftp' is not. This could be caused by an 'echo' command, or any other program run from a startup file that outputs text to the screen.   #
-#If the error happens for all users, look at the system-wide startup files for the login shell in use, which will typically be in /etc. If the error only happens for one user, check the personal shell startup files in their home directory, typically something like .login, .cshrc, .bashrc, .bash_login, and so forth. Check the man page for the shell in use for all startup files that the shell could execute on login.                                                                                                                                                         #
+#The "Received message too long <decimal number>" indicates that the shell startup files on the remote system contain at least one command that is trying to write text to the terminal. The 'ssh' program is able to handle the text output, but 'sftp' is not. This could be caused by an 'echo' command, or any other program run from a startup file that outputs text to the screen.
+#
+#If the error happens for all users, look at the system-wide startup files for the login shell in use, which will typically be in /etc. If the error only happens for one user, check the personal shell startup files in their home directory, typically something like .login, .cshrc, .bashrc, .bash_login, and so forth. Check the man page for the shell in use for all startup files that the shell could execute on login.
+#
 #When looking for the offending command, sometime translating the <decimal number> in the error message may help. For example:
 #
 #1416586337 decimal = 546F6461 hex = "Toda" ASCII.
@@ -131,6 +134,23 @@ rm -rf repo/
 cd diskd/projects/
 svn co file:///home/walter.chen/svn/repo/mps
 
+# vivado
+# dump all signals at once
+# log_wave -recursive *
+#
 
+# vivado SDK
+# - sol1
+# set fp [open test.log w]
+# puts $fp [mrd 0 10]
+# close $fp
+# - sol2
+# connect
+# mrd -bin -file Dump.bin 0x0 512
+# mwr -bin -file Restore.bin 0x0 512
 
+# remote login
+# ssh sj-ws-lnx16
 
+# svn propset svn:mime-type text/plain build.xml
+# svn commit build.xml
