@@ -19,3 +19,118 @@ netsh wlan disconnect
 cpan install Verilog::Language
 
 #--------------------------------------------
+# vi splited window sync view
+# :windo set scrollbind
+# :windo set cursorline
+# :cursorbind
+
+
+
+
+#--------------------------------------------
+# sftp concorn for .cshrc_user
+#
+#The "Received message too long <decimal number>" indicates that the shell startup files on the remote system contain at least one command that is trying to write text to the terminal. The 'ssh' program is able to handle the text output, but 'sftp' is not. This could be caused by an 'echo' command, or any other program run from a startup file that outputs text to the screen.   #
+#If the error happens for all users, look at the system-wide startup files for the login shell in use, which will typically be in /etc. If the error only happens for one user, check the personal shell startup files in their home directory, typically something like .login, .cshrc, .bashrc, .bash_login, and so forth. Check the man page for the shell in use for all startup files that the shell could execute on login.                                                                                                                                                         #
+#When looking for the offending command, sometime translating the <decimal number> in the error message may help. For example:
+#
+#1416586337 decimal = 546F6461 hex = "Toda" ASCII.
+#
+#So, perhaps there is a command like this in a startup file:
+#
+#echo "Today is"/bin/date`
+#If the user does not want to remove the offening command from the startup file, they could tell the shell to exit the script for programs like sftp. For example, for the csh/tcsh shell, put this line as the first line in the startup file with the offending command.                                                                                                                  #
+#if(!$?prompt)exit`
+#
+#
+#
+
+# sftp -b <batch_file> [user]@server:[port]
+#
+# sftp [user]@host[:port][/dest_path] <<< $'put /local_path/file'
+#
+# sftp deepak@sftp-server <<EOF
+# > cd dest_dir
+# > mkdir sftp-client_dir
+# > put -r /tmp/sftp-client_dir <-- SFTP put command to upload /tmp/sftp-client_dir to sftp-server
+# > quit
+# > EOF
+#
+#
+# sftp [-r] deepak@sftp-server:dest_dir/sftp-server_file /tmp/
+
+
+#--------------------------------------------
+# Windows COM port status
+$ mode
+$ mode com5
+$ mode /?
+
+# https://sfriederichs.github.io/how-to/svn/cygwin/2017/11/08/Cygwin-SVN-Server.html
+# 2023-12-19 how to setup SVN server (cygwin)
+# setup.sh
+#!/bin/sh
+
+cd ~ ; # cd /home/walter.chen
+mkdir -p svn/repo
+svnadmin create .
+
+if [ -d conf ]
+then
+    echo "-- svn repo init failed"
+fi
+
+cd svn/repo
+cp ./conf/svnserve.conf conf/svnserve.conf.00
+cp ./conf/passwd ./conf/passwd.00
+cp ./conf/authz ./conf/authz.00
+
+# authz-db = authz
+# hooks-env = hooks-env
+# password-db = passwd
+TAR=./conf/svnserve.conf
+sed -i.b00 '/# authz-db = authz/     s/^# //' $TAR
+sed -i.b00 '/# hooks-env = hooks-en/ s/^# //' $TAR
+sed -i.b00 '/# password-db = passw/  s/^# //' $TAR
+
+# [users]
+# walter.chen = mps
+TAR=./conf/passwd
+sed -i.b00 '/^\[users\]/ a \
+walter.chen = mps
+' $TAR
+
+# add to file bottom
+TAR=./conf/authz
+sed -i.b00 '$a \
+[/]\
+* = rw
+' $TAR
+
+# https://sfriederichs.github.io/how-to/svn/cygwin/2017/11/08/Cygwin-SVN-Server.html
+# 2023-12-19 how to startup SVN server (cygwin)
+svnserve -d -r /home/walter.chen/svn/repo
+
+# https://sfriederichs.github.io/how-to/svn/cygwin/2017/11/08/Cygwin-SVN-Server.html
+# 2023-12-19 how to startup SVN server (cygwin)
+# Open a new Cygwin terminal as an administrator, then
+#   cygrunsrv –install svnserve –disp “CYGWIN svnserve” –path /bin/svnserve –args “–daemon –foreground –root=/cygdrive/c/svn”
+#   cygrunsrv --install svnserve --path /usr/bin/svnserve --args '–-daemon --root /home/walterc.chen/svn/repo --foreground' --disp 'GYWIN svnserve'
+
+# https://stackoverflow.com/questions/1227870/how-can-i-access-a-subversion-repository-using-a-local-path-in-windows
+# 2023-12-19 how to use local SVN server
+cd diskd/
+svn co file:///home/walter.chen/svn/repo .
+mkdir mps
+touch mps/pstatus.txt
+svn add mps
+svn ci -m "init pstatus.txt - project status"
+rm -rf repo/
+
+
+cd diskd/projects/
+svn co file:///home/walter.chen/svn/repo/mps
+
+
+
+
