@@ -118,6 +118,20 @@ $ virtualenv <env_name>
 $ source <env_name>/bin/activate
 (<env_name>)$ pip install -r path/to/requirements.txt
 
+
+#  -------------------------------------
+#  how-to-recovery-corrupt-tgz 2024/02/18
+#  -------------------------------------
+# https://www.urbanophile.com/arenn/coding/gzrt/gzrt.html
+#  -------------------------------------
+
+$ ls *.gz
+my-corrupted-backup.tar.gz
+$ gzrecover my-corrupted-backup.tar.gz
+$ ls *.recovered
+my-corrupted-backup.tar.recovered
+$ cpio -F my-corrupted-backup.tar.recovered -i -v
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
