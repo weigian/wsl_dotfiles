@@ -133,6 +133,16 @@ my-corrupted-backup.tar.recovered
 $ cpio -F my-corrupted-backup.tar.recovered -i -v
 
 #  -------------------------------------
+#  how-to-install-apt-cyg 2024/02/20
+#  -------------------------------------
+
+wget2 rawgit.com/transcode-open/apt-cyg/master/apt-cyg -O /usr/local/bin/apt-cyg
+chmod +x /usr/local/bin/apt-cyg
+apt-cyg search bind-utils
+apt-cyg install bind-utils
+apt-cyg remove bind-utils
+
+#  -------------------------------------
 # append from here
 #  -------------------------------------
 
