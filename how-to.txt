@@ -1,18 +1,15 @@
 #  -------------------------------------
-#  how-to-bring-up-docker-wsl-ubuntu2204
+#  how-to-bring-up-docker-wsl-ubuntu2404 (2024/02/26)
 #  -------------------------------------
+#  https://linuxconfig.org/running-ubuntu-24-04-lts-on-docker
 #  sudo apt update
-#  sudo apt list --upgradable
 #  sudo apt install docker.io
-#  sudo dockerd
-#  pstree 
-#  # only user in docker group can connect to docker daemon
-#  echo $USER
-#  usermod -aG docker $USER 
-#  sudo usermod -aG docker $USER 
-#  cat /etc/group
-#  # usermod change needs logout/login in to be effective
-#  docker run hello-world
+#  sudo systemctl enable --now docker
+#  sudo usermod -aG docker ${USER}
+#  docker pull ubuntu:24.04
+#  docker images
+#  docker run -it ubuntu:24.04 ; # run container
+#  cat /etc/issue ; # confirm Ubuntu Version in container
 #
 #  -------------------------------------
 # ## trouble shoots 2024/02/26
