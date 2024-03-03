@@ -178,6 +178,13 @@ apt-cyg install bind-utils
 apt-cyg remove bind-utils
 
 #  -------------------------------------
+#  powershell wsl commands 2024/03/03
+#  -------------------------------------
+#  wsl --list
+#  wsl --unregister Ubuntu-19.04
+#  wsl -l -o
+#  wsl --install Ubuntu-22.04
+#  -------------------------------------
 # append from here
 #  -------------------------------------
 
