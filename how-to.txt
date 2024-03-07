@@ -184,6 +184,30 @@ apt-cyg remove bind-utils
 #  wsl --unregister Ubuntu-19.04
 #  wsl -l -o
 #  wsl --install Ubuntu-22.04
+
+#  -------------------------------------
+#  how-to-run-wsl-Vitis/Vivado/Petalinux
+#  -------------------------------------
+#  https://xilinx.eetrend.com/content/2022/100557428.html
+#  wsl --shutdown
+#  wsl-l -v
+#  wsl --export Ubuntu-18.04 d:\ubuntu18.04.tar
+#  wsl --unregister Ubuntu-18.04
+#  wsl --import Ubuntu-18.04 d:\ubuntu2004 d:\ubuntu18.04.tar
+#  ubuntu config --default-user walter
+#  del d:\ubuntu18.04.tar
+#  DISKPART 
+#       select vdisk file=”d:\ubuntu1804\ext4.vhdx ”；
+#       detail vdisk
+#       expand vdisk maximum=1200000 ; #1200000MB~=1.2TB
+#       exit
+#  ubuntu
+#  sudo mount -t devtmpfs none /dev
+#  mount | grep ext4 ; # should see /dev/sdX - to use /dev/sdb as example here
+#  sudo resize2fs /dev/sdb 1200000M
+#  sudo apt-get install xfce4
+#  startxfce4 &
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
