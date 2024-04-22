@@ -215,6 +215,18 @@ apt-cyg remove bind-utils
 PS C:\Users\walter.chen> (Get-ChildItem -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss | Where-Object { $_.GetValue("DistributionName") -eq 'Ubuntu' }).GetValue("BasePath") + "\ext4.vhdx"
 
 #  -------------------------------------
+# Docker 移除 Containers、Images、Volumes 與 Networks 的方法
+#  -------------------------------------
+# https://blog.clarence.tw/2019/09/10/docker-removing-containers-images-volumes-and-networks/
+# docker ps -a
+# docker container prune
+# docker image list
+# docker image rm <image:tag>
+# docker image prune
+# docker system prune
+# docker container ls -a --filter status=exited --filter status=created
+
+#  -------------------------------------
 # append from here
 #  -------------------------------------
 
