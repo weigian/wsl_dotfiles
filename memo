@@ -154,3 +154,13 @@ svn co file:///home/walter.chen/svn/repo/mps
 
 # svn propset svn:mime-type text/plain build.xml
 # svn commit build.xml
+
+
+# docker build
+docker build -t "my/verilator" .  ;# build with Dockerfile
+
+# docker disk space maintenance/release/cleanup - every often 
+docker image prune [-f]
+docker system prune [-f]
+
+
