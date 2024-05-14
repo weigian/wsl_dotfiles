@@ -165,3 +165,18 @@ docker system prune [-f]
 
 # return 1: little-endian 0: big-endian
 echo -n I | od -to2 | head -n1 | cut -f2 -d" " | cut -c6
+
+# https://superuser.com/questions/1788147/wsl-distro-occupying-too-much-space-despite-not-having-so-many-files-in-it
+# ./ext4.vhdx by the full path of the disk image which can be typically found at "%userprofile%\AppData\Local\Packages\CanonicalGroupLimited.<Distro>\LocalState\ext4.vhdx"
+-- TRY --
+wsl --shutdown
+optimize-vhd -Path .\ext4.vhdx -Mode full
+-- OR --
+wsl --shutdown
+diskpart
+# open window Diskpart
+select vdisk file=".\ext4.vhdx"
+attach vdisk readonly
+compact vdisk
+detach vdisk
+exit
