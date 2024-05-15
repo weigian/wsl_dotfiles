@@ -180,3 +180,9 @@ attach vdisk readonly
 compact vdisk
 detach vdisk
 exit
+
+# git commands
+$ git rev-parse --show-toplevel   ;# /cygdrive/d/docker_home/petalinux/yy/docker-vivado
+$ git remote show origin          ;# Fetch URL: https://github.com/phwl/docker-vivado
+
+
