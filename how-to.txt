@@ -226,6 +226,12 @@ PS C:\Users\walter.chen> (Get-ChildItem -Path HKCU:\Software\Microsoft\Windows\C
 # docker system prune
 # docker container ls -a --filter status=exited --filter status=created
 
+# -------------------------------------
+# How to Find Directories/Files That Take up the Most Disk Space in Linux: A Step-by-Step Tutorial
+# -------------------------------------
+# https://medium.com/devops-technical-notes-and-manuals/how-to-check-disk-space-usage-in-linux-and-find-unnecessary-files-a-step-by-step-tutorial-d759a9b97660
+sudo du -hsx /usr/lib/x86_64-linux-gnu/* | sort -rh | head -n 10
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
