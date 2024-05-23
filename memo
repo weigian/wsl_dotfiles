@@ -193,4 +193,8 @@ exit
 $ git rev-parse --show-toplevel   ;# /cygdrive/d/docker_home/petalinux/yy/docker-vivado
 $ git remote show origin          ;# Fetch URL: https://github.com/phwl/docker-vivado
 
+# fsdbDump用法
+https://www.francisz.cn/2019/08/29/fsdb-dump/
+
+
 
