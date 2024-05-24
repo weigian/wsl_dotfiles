@@ -1,4 +1,22 @@
 #  -------------------------------------
+#  how-to-bring-up-peakrdl-venv
+#  -------------------------------------
+sudo apt install python3
+sudo apt install pip
+pip install virtualenv
+
+
+virtualenv venv-peakrdl
+. venv-peakrdl/bin/activate
+python3 -m pip install peakrdl
+
+-- OR --
+pip freeze > requirements.txt ;# export venv
+pip uninstall -r requirements.txt ;# clen-up venv
+pip install -r requirements.txt ;# import to new venv
+
+
+#  -------------------------------------
 #  how-to-bring-up-docker-wsl-ubuntu2404 (2024/02/26)
 #  -------------------------------------
 #  https://linuxconfig.org/running-ubuntu-24-04-lts-on-docker
