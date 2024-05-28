@@ -250,6 +250,14 @@ PS C:\Users\walter.chen> (Get-ChildItem -Path HKCU:\Software\Microsoft\Windows\C
 # https://medium.com/devops-technical-notes-and-manuals/how-to-check-disk-space-usage-in-linux-and-find-unnecessary-files-a-step-by-step-tutorial-d759a9b97660
 sudo du -hsx /usr/lib/x86_64-linux-gnu/* | sort -rh | head -n 10
 
+# -------------------------------------
+# How to create .Xauthority manually
+# -------------------------------------
+# https://micwan88.github.io/linux/xauth/2019/10/16/create-xauthority-manually.html
+
+xauth add ${HOSTNAME}:0 . $(xxd -l 16 -p /dev/urandom)
+xauth list
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
