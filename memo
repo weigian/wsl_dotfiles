@@ -197,4 +197,12 @@ $ git remote show origin          ;# Fetch URL: https://github.com/phwl/docker-v
 https://www.francisz.cn/2019/08/29/fsdb-dump/
 
 
+# PowerShell
+# https://allthings.how/how-to-use-windows-terminal-keyboard-shortcuts  (How to Use Windows Terminal Keyboard Shortcuts)
+# https://www.freecodecamp.org/news/windows-terminal-themes-color-schemes-powershell-customize 
+# https://dev.to/ansonh/customize-beautify-your-windows-terminal-2022-edition-541l#:~:text=To%20install%20the%20color%20scheme%3A%201%20Open%20Settings,your%20changes%20and%20head%20back%20to%20Windows%20Terminal.   (Customize & Beautify your Windows Terminal (2022 Edition))
 
+# Podman
+# https://gcore.com/learning/podman-for-docker-users
+sudo docker images --format '{{.Repository}}:{{.Tag}}'
+podman pull docker-daemon:hello-world:latest
