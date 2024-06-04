@@ -206,3 +206,21 @@ https://www.francisz.cn/2019/08/29/fsdb-dump/
 # https://gcore.com/learning/podman-for-docker-users
 sudo docker images --format '{{.Repository}}:{{.Tag}}'
 podman pull docker-daemon:hello-world:latest
+
+
+
+# List of awesome open source hardware tools
+# https://giters.com/jhon-p16/awesome-hardware-tools
+
+# fsm2sv
+# https://github.com/mohamed/fsm2sv/
+# https://graphviz.org/docs/layouts/dot/
+fsm2sv -i ./examples/example1.yml    -o fsdm.sv -d fsdm.dot
+dot -Tsvg filename.dot -o outfile.svg
+
+# svg2vsd
+# SVG to Visio objects
+# open in.svg with Visio; ungroup all; save to vsd/vsdx
+
+
+
