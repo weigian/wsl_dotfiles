@@ -223,4 +223,32 @@ dot -Tsvg filename.dot -o outfile.svg
 # open in.svg with Visio; ungroup all; save to vsd/vsdx
 
 
+# mermaid flowchart
+# https://www.mermaidchart.com/app/projects/9dcfb80b-01f3-45ae-9191-567f8e8e10bb/diagrams/3035e8d5-f0cf-45cc-972d-0e70a94c48f8/version/v0.1/edit
+---
+title: ADC24b
+---
+flowchart TD
+    A[POR]
+    G[DOR]
+    B[DRDY]
+    C[DOUT]
+    D[SYNC]
+    F[PWDN]
+    A[POR] -->|pwr_rdy| G
+    G-->|"dor_rdy\n(t4/t14/t16)"| B
+    B -->|clk_cnt_gte_36| C
+    C -->|"clk_cnt_gte_348 \n&& !clk_cnt_gte_4_Tdrdy"| B
+    C -->|"clk_cnt_gte_348 \n&& clk_cnt_gte_4_Tdrdy"| D
+    D -->|clk_cnt_gte_20_Tdrdy| F
+    D -->|sclk_high_to_low| G
+    F -->|sclk_high_to_low| G
+    %%classDef CC fill:#f9f,stroke:#333,stroke-width:4px;
+    %%classDef CC fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+    classDef CC stroke-dasharray: 3 3
+    class A CC
+    class G CC
+    
 
+
+  
