@@ -193,6 +193,19 @@ exit
 $ git rev-parse --show-toplevel   ;# /cygdrive/d/docker_home/petalinux/yy/docker-vivado
 $ git remote show origin          ;# Fetch URL: https://github.com/phwl/docker-vivado
 
+$ git config --global diff.tool vimdiff
+$ git config --global difftool.prompt false
+$ git difftool README.md
+$ git config --global alias.d difftool
+$ git d README.md
+
+# git book online
+# https://git-scm.com/book/en/v2
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+
 # fsdbDump用法
 https://www.francisz.cn/2019/08/29/fsdb-dump/
 
