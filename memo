@@ -163,6 +163,14 @@ docker build -t "my/verilator" .  ;# build with Dockerfile
 docker image prune [-f]
 docker system prune [-f]
 
+# docker run
+docker run --hostname=$(hostname) [options] <image>
+
+# docker misc
+docker search --filter=is-official=true redmine
+container-diff diff daemon://modified_debian:latest remote://gcr.io/google-appengine/debian8:latest
+
+
 # return 1: little-endian 0: big-endian
 echo -n I | od -to2 | head -n1 | cut -f2 -d" " | cut -c6
 
@@ -185,4 +193,63 @@ exit
 $ git rev-parse --show-toplevel   ;# /cygdrive/d/docker_home/petalinux/yy/docker-vivado
 $ git remote show origin          ;# Fetch URL: https://github.com/phwl/docker-vivado
 
+# fsdbDump用法
+https://www.francisz.cn/2019/08/29/fsdb-dump/
 
+
+# PowerShell
+# https://allthings.how/how-to-use-windows-terminal-keyboard-shortcuts  (How to Use Windows Terminal Keyboard Shortcuts)
+# https://www.freecodecamp.org/news/windows-terminal-themes-color-schemes-powershell-customize 
+# https://dev.to/ansonh/customize-beautify-your-windows-terminal-2022-edition-541l#:~:text=To%20install%20the%20color%20scheme%3A%201%20Open%20Settings,your%20changes%20and%20head%20back%20to%20Windows%20Terminal.   (Customize & Beautify your Windows Terminal (2022 Edition))
+
+# Podman
+# https://gcore.com/learning/podman-for-docker-users
+sudo docker images --format '{{.Repository}}:{{.Tag}}'
+podman pull docker-daemon:hello-world:latest
+
+
+
+# List of awesome open source hardware tools
+# https://giters.com/jhon-p16/awesome-hardware-tools
+
+# fsm2sv
+# https://github.com/mohamed/fsm2sv/
+# https://graphviz.org/docs/layouts/dot/
+fsm2sv -i ./examples/example1.yml    -o fsdm.sv -d fsdm.dot
+dot -Tsvg filename.dot -o outfile.svg
+
+# svg2vsd
+# SVG to Visio objects
+# open in.svg with Visio; ungroup all; save to vsd/vsdx
+
+
+# mermaid flowchart
+# https://www.mermaidchart.com/app/projects/9dcfb80b-01f3-45ae-9191-567f8e8e10bb/diagrams/3035e8d5-f0cf-45cc-972d-0e70a94c48f8/version/v0.1/edit
+---
+title: ADC24b
+---
+flowchart TD
+    A[POR]
+    G[DOR]
+    B[DRDY]
+    C[DOUT]
+    D[SYNC]
+    F[PWDN]
+    A[POR] -->|pwr_rdy| G
+    G-->|"dor_rdy\n(t4/t14/t16)"| B
+    B -->|clk_cnt_gte_36| C
+    C -->|"clk_cnt_gte_348 \n&& !clk_cnt_gte_4_Tdrdy"| B
+    C -->|"clk_cnt_gte_348 \n&& clk_cnt_gte_4_Tdrdy"| D
+    D -->|clk_cnt_gte_20_Tdrdy| F
+    D -->|sclk_high_to_low| G
+    F -->|sclk_high_to_low| G
+    %%classDef CC fill:#f9f,stroke:#333,stroke-width:4px;
+    %%classDef CC fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+    classDef CC stroke-dasharray: 3 3
+    class A CC
+    class G CC
+    
+# docsify
+# https://codewithhugo.com/docsify-mermaid-10/
+
+  

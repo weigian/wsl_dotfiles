@@ -1,4 +1,22 @@
 #  -------------------------------------
+#  how-to-bring-up-peakrdl-venv
+#  -------------------------------------
+sudo apt install python3
+sudo apt install pip
+pip install virtualenv
+
+
+virtualenv venv-peakrdl
+. venv-peakrdl/bin/activate
+python3 -m pip install peakrdl
+
+-- OR --
+pip freeze > requirements.txt ;# export venv
+pip uninstall -r requirements.txt ;# clen-up venv
+pip install -r requirements.txt ;# import to new venv
+
+
+#  -------------------------------------
 #  how-to-bring-up-docker-wsl-ubuntu2404 (2024/02/26)
 #  -------------------------------------
 #  https://linuxconfig.org/running-ubuntu-24-04-lts-on-docker
@@ -231,6 +249,14 @@ PS C:\Users\walter.chen> (Get-ChildItem -Path HKCU:\Software\Microsoft\Windows\C
 # -------------------------------------
 # https://medium.com/devops-technical-notes-and-manuals/how-to-check-disk-space-usage-in-linux-and-find-unnecessary-files-a-step-by-step-tutorial-d759a9b97660
 sudo du -hsx /usr/lib/x86_64-linux-gnu/* | sort -rh | head -n 10
+
+# -------------------------------------
+# How to create .Xauthority manually
+# -------------------------------------
+# https://micwan88.github.io/linux/xauth/2019/10/16/create-xauthority-manually.html
+
+xauth add ${HOSTNAME}:0 . $(xxd -l 16 -p /dev/urandom)
+xauth list
 
 #  -------------------------------------
 # append from here
