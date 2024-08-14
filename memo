@@ -265,4 +265,12 @@ flowchart TD
 # docsify
 # https://codewithhugo.com/docsify-mermaid-10/
 
+# sys admin
+
+# https://medium.com/@nirbhaysingh281/clear-the-memory-cache-in-linux-e8c74419bc24
+# 1: Dropping page cache
+# 2: Dropping dentries and inodes
+# 3: Dropping page cache, dentries, and inodes (combination of 1 and 2)
+
+$ sync && echo 3 > /proc/sys/vm/drop_caches
   
