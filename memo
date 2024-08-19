@@ -274,3 +274,7 @@ flowchart TD
 
 $ sync && echo 3 > /proc/sys/vm/drop_caches
   
+# free ;# check for available/used/swap
+$ free -w -s 1 -c 3 
+$ watch -d -n 1 free 
+
