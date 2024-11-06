@@ -151,6 +151,8 @@ svn co file:///home/walter.chen/svn/repo/mps
 
 # remote login
 # ssh sj-ws-lnx16
+# ssh -t sj-ws-lnx16 'vim'
+# ssh -t sj-ws-lnx16 'crontab -e'
 
 # svn propset svn:mime-type text/plain build.xml
 # svn commit build.xml
@@ -277,4 +279,71 @@ $ sync && echo 3 > /proc/sys/vm/drop_caches
 # free ;# check for available/used/swap
 $ free -w -s 1 -c 3 
 $ watch -d -n 1 free 
+
+$ rsync -avgR /mnt/d/regblock/ sj-ws-lnx16:~/
+
+# uptime 
+$ uptime -s
+$ uptime -p
+
+# gnu-octave package installation
+pkg install "https://github.com/gnu-octave/pkg-control/releases/download/control-4.0.1/control-4.0.1.tar.gz"
+
+# misc
+# is your system little-endian or big-endian
+# 1: little-endian
+# 0: big-endian
+$ echo -n I | od -to2 | head -n1 | cut -f2 -d" " | cut -c6
+
+# https://www.reddit.com/r/RISCV/comments/1feza0j/riscv_toolchain/
+$ apt install gcc-riscv64-linux-gnu
+$ apt install gcc-riscv64-unknown-elf
+$ riscv-....-gcc -o a.out a.c
+$ file a.out
+$ readelf -h a.out
+
+# vim
+# easy-align
+ga<c-i>*<space>   ;# ignore exisiting indentation
+
+# screen-scroll
+zt
+zz
+zm
+
+# ANSI color codes
+# https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797?permalink_comment_id=3857871
+#
+# ESC
+# Ctrl-Key: ^[
+# Octal: \033
+# Unicode: \u001b
+# Hexadecimal: \x1B
+# Decimal: 27
+#
+# [...m is the sequence that sets colors
+# 
+# echo -e     enable interpretation of backslash escapes
+#
+# #!/bin/bash
+#
+# RED='\033[0;31m'
+# NOCOLOR='\033[0m'
+# echo -e "I ${RED}love${NOCOLOR} Linux"
+#
+# [30m: Black
+# [31m: Red
+# [32m: Green
+# [33m: Yellow
+# [34m: Blue
+# [35m: Magenta
+# [36m: Cyan
+# [37m: White
+
+# Vivado timing report screen
+# %s/\(.\+ time\) \(\d\+\)/\t\2\t /
+
+# find
+# find / -type f -user vivek -ls -o -type f -user wendy -ls
+# find / -type f -not -user vivek -ls
 
