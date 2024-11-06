@@ -258,6 +258,43 @@ sudo du -hsx /usr/lib/x86_64-linux-gnu/* | sort -rh | head -n 10
 xauth add ${HOSTNAME}:0 . $(xxd -l 16 -p /dev/urandom)
 xauth list
 
+
+# -------------------------------------
+# How to run exported Xilinx Simulation
+# -------------------------------------
+# two steps
+
+cp /cad/xilinx/vivado/2023.2/data/verilog/src/glbl.v x2/xcelium/glbl.v ;# to use tool version glbl.v
+vivado -mode tcl -tempDir /tmp/vivado << EOF
+compile_simlib -simulator xcelium -family spartan7 -library unisim -library simprim -directory /home/walter.chen/tmp/xlib -force -no_systemc_compile -no_ip_compile
+quit
+EOF ;# to compile library
+./tb_post_MDX9747X_functional_test_top.sh -lib_map_path /home/walter.chen/tmp/xlib ;# run with compiled library
+
+# -------------------------------------
+# How to create .Xauthority manually
+# -------------------------------------
+# https://micwan88.github.io/linux/xauth/2019/10/16/create-xauthority-manually.html
+
+touch ~/.Xauthority
+
+# Generate the magic cookie with 128 bit hex encoding
+xauth add ${HOST}:0 . $(xxd -l 16 -p /dev/urandom)
+
+# Verify the result and it shouldn't show any error
+xauth list
+
+# -------------------------------------
+# How to Permanently Disable GNOME Screensaver System-Wide
+# -------------------------------------
+dconf read /org/gnome/desktop/screensaver/idle-activation-enabled
+dconf write /org/gnome/desktop/screensaver/idle-activation-enabled false
+dconf read /org/gnome/desktop/screensaver/lock-enabled
+dconf write /org/gnome/desktop/screensaver/lock-enabled false
+- or -
+gsettings get org.gnome.desktop.screensaver lock-enabled
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
