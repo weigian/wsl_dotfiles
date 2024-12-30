@@ -295,6 +295,10 @@ dconf write /org/gnome/desktop/screensaver/lock-enabled false
 gsettings get org.gnome.desktop.screensaver lock-enabled
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 
+xset s off
+xset s noblank
+xset -dpms
+
 #  -------------------------------------
 # append from here
 #  -------------------------------------
