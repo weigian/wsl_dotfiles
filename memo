@@ -279,6 +279,15 @@ flowchart TD
 
 # sys admin
 
+# alternative commands
+# ls -> era lsd
+# du -> dust
+# cat -> bat
+# find -> fd
+# sed -> sd
+# htop -> btop bottom glances
+
+
 # https://medium.com/@nirbhaysingh281/clear-the-memory-cache-in-linux-e8c74419bc24
 # 1: Dropping page cache
 # 2: Dropping dentries and inodes
@@ -313,8 +322,7 @@ $ file a.out
 $ readelf -h a.out
 
 # !/bin/bash
-# substring
-# ${variable:offset:length}
+# substring - ${variable:offset:length}
 string="Hello, World!" ;# Example 1: Basic Substring Extraction
 echo ${string:7:5}  # Output: World
 string="Welcome to Bash scripting" ;# Example 2: Extracting from a Fixed Position
@@ -331,7 +339,7 @@ string="abc abc abc" ;# Replace All Occurrences
 echo ${string//abc/xyz}  # Output: xyz xyz xyz
  
 # !/bin/bash
-# two caputre groups
+# two capture groups
 string="Hello World"
 pattern='(H[a-z]+)\s*(W[a-z]+)'
 if [[ $string =~ $pattern ]]; then
@@ -340,6 +348,13 @@ if [[ $string =~ $pattern ]]; then
         echo "$i: ${BASH_REMATCH[$i]}"
     done
 fi
+# printf
+printf "%d\n" "$number" ;# 0x10 -> 16
+printf "%x\n" "$number" ;# 16   -> 0x10
+var="Hello,World!"
+var="FttTtt"
+printf '|%-15s|%-15s|%-15s|%15s|\n' ${var} ${var^}  ${var,}  ${var~}
+printf '|%-15s|%-15s|%-15s|%15s|\n' ${var} ${var^^} ${var,,} ${var~~}
 
 # a self-destruct script
 #!/bin/bash
@@ -351,10 +366,15 @@ rm -- "$0"
 # easy-align
 ga<c-i>*<space>   ;# ignore exisiting indentation
 
+# fold
+zR ;# unfold all
+zM ;# fold all
+za ;# fold/unfold toggle @cursor
+
 # screen-scroll
 zt
 zz
-zm
+zb
 
 # paste mode to disable auto comment/ident/... 
 :set paste
@@ -414,3 +434,7 @@ Enter
 # find / -type f -user vivek -ls -o -type f -user wendy -ls ;# -o: or
 # find / -type f -not -user vivek -ls
 
+# Linux Shell
+# fmt
+# ispell/aspell
+#
